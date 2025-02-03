@@ -1,0 +1,669 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url('images/background.jpg'); 
+  background-size: cover;
+  background-position: center;
+  background-color: #e0e0e0;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.center {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  min-width: 280px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 25px 15px;
+}
+
+/* Birds styles */
+.birds {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.bird {
+  position: relative;
+  width: 70px;
+  height: 85px;
+  margin: 0 3px;
+  transition: all 0.4s ease;
+  transform-origin: center;
+  background: #4a90e2;
+  border-radius: 50px;
+  transform: translateY(-100%);
+}
+
+.bird:after {
+  content: '';
+  position: absolute;
+  right: 5px;
+  background: #4a90e2;
+  border-bottom-right-radius: 15px;
+  height: 10px;
+  width: 40px;
+}
+
+.bird .right-eye,
+.bird .left-eye {
+  position: absolute;
+  top: 25px;
+  background: #000;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.bird .right-eye {
+  left: 15px;
+}
+
+.bird .left-eye {
+  right: 15px;
+}
+
+.bird .inner-eye {
+  position: absolute;
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #FFF;
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+  transition: all 0.2s ease;
+}
+
+.bird .eyelid {
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background: #4a90e2;
+  transition: all 0.2s ease;
+  border-bottom-left-radius: 7.5px;
+  border-bottom-right-radius: 7.5px;
+}
+
+.bird .eyelid.closed {
+  top: 0;
+}
+
+.bird .mouth {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-width: 15px 15px 0 15px;
+  border-color: #357abd transparent transparent transparent;
+  height: 0;
+  width: 0;
+  z-index: 2;
+}
+
+.bird .right-hand {
+  position: absolute;
+  top: 35px;
+  left: -15px;
+  transform: rotate(10deg);
+  background: #357abd;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  height: 40px;
+  width: 25px;
+  transition: transform 0.3s ease;
+  transform-origin: top right;
+}
+
+.bird .left-hand {
+  position: absolute;
+  top: 35px;
+  right: -15px;
+  transform: rotate(-10deg);
+  background: #357abd;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  height: 40px;
+  width: 25px;
+  transition: transform 0.3s ease;
+  transform-origin: top left;
+}
+
+.bird:hover .right-hand {
+  animation: rotate-right 0.5s infinite alternate;
+}
+
+.bird:hover .left-hand {
+  animation: rotate-left 0.5s infinite alternate;
+}
+
+.bird .belly {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #6ba5e7;
+  border-radius: 35px;
+  height: 45px;
+  width: 45px;
+}
+
+.bird .right-foot {
+  position: absolute;
+  bottom: -8px;
+  right: 35%;
+  transform: translateX(50%);
+  width: 6px;
+  height: 10px;
+  background: #357abd;
+  border-radius: 0 0 2px 2px;
+}
+
+.bird .right-foot:before,
+.bird .right-foot:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  height: 5px;
+  background: #357abd;
+  border-radius: 0 0 2px 2px;
+}
+
+.bird .right-foot:before {
+  right: 6px;
+  transform: rotate(15deg);
+}
+
+.bird .right-foot:after {
+  left: 6px;
+  transform: rotate(-15deg);
+}
+
+.bird .left-foot {
+  position: absolute;
+  bottom: -8px;
+  left: 35%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 10px;
+  background: #357abd;
+  border-radius: 0 0 2px 2px;
+}
+
+.bird .left-foot:before,
+.bird .left-foot:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  height: 5px;
+  background: #357abd;
+  border-radius: 0 0 2px 2px;
+}
+
+.bird .left-foot:before {
+  right: 6px;
+  transform: rotate(15deg);
+}
+
+.bird .left-foot:after {
+  left: 6px;
+  transform: rotate(-15deg);
+}
+
+@keyframes rotate-right {
+  0% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }    
+}
+
+@keyframes rotate-left {
+  0% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }    
+}
+
+@keyframes drop {
+  0% {
+    transform: translate(0px, 0px); 
+  }
+  25% {
+    transform: translate(-2px, 2px); 
+  }
+  50% {
+    transform: translate(-3px, 3px); 
+  }
+  75% {
+    transform: translate(-2px, 2px); 
+  }
+  100% {
+    transform: translate(0px, 0px); 
+  }  
+}
+
+/* Bird colors and variations */
+.bird-1 {
+  transform: scale(0.95) rotate(-5deg);
+}
+.bird-1 .bird-head,
+.bird-1 .bird-body,
+.bird-1 .wing-left,
+.bird-1 .wing-right,
+.bird-1 .tail {
+  background: #4D96FF;
+}
+
+.bird-2 {
+  transform: scale(1.05) rotate(0deg);
+}
+.bird-2 .bird-head,
+.bird-2 .bird-body,
+.bird-2 .wing-left,
+.bird-2 .wing-right,
+.bird-2 .tail {
+  background: #6BCB77;
+}
+
+.bird-3 {
+  transform: scale(1) rotate(5deg);
+}
+.bird-3 .bird-head,
+.bird-3 .bird-body,
+.bird-3 .wing-left,
+.bird-3 .wing-right,
+.bird-3 .tail {
+  background: #FF6B6B;
+}
+
+/* Animation keyframes */
+@keyframes fly {
+  0% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-30px) rotate(-2deg); }
+  100% { transform: translateY(0) rotate(-5deg); }
+}
+
+@keyframes fly2 {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-35px) rotate(2deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes fly3 {
+  0% { transform: translateY(0) rotate(5deg); }
+  50% { transform: translateY(-28px) rotate(2deg); }
+  100% { transform: translateY(0) rotate(5deg); }
+}
+
+@keyframes flap {
+  0% { transform: rotate(-10deg); }
+  50% { transform: rotate(-65deg); }
+  100% { transform: rotate(-10deg); }
+}
+
+@keyframes flapRight {
+  0% { transform: rotate(10deg); }
+  50% { transform: rotate(65deg); }
+  100% { transform: rotate(10deg); }
+}
+
+/* Focus states */
+.username:focus ~ .birds .bird {
+  transform: translateY(-150%);
+}
+
+.username:focus ~ .birds .bird .right-hand {
+  animation: rotate-right 0.5s infinite alternate;
+}
+
+.username:focus ~ .birds .bird .left-hand {
+  animation: rotate-left 0.5s infinite alternate;
+}
+
+.password:focus ~ .birds .bird .right-hand {
+  transform: rotate(85deg);
+  top: 25px;
+  left: -5px;
+}
+
+.password:focus ~ .birds .bird .left-hand {
+  transform: rotate(-85deg);
+  top: 25px;
+  right: -5px;
+}
+
+/* Return animation when not focused */
+.hands {
+  position: absolute;
+  top: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  transition: transform 0.5s ease;
+}
+
+.username:focus ~ .hands {
+  transform: translate(-50%, -80px);
+}
+
+.password:focus ~ .hands {
+  transform: translate(-50%, -60px);
+}
+
+/* Form Styles */
+.login {
+  position: relative;
+  margin: 180px auto 20px;
+  padding: 0 20px;
+  max-width: 300px;
+}
+
+.login label {
+  position: relative;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.login i {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  color: #aaa;
+}
+
+.login input {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  font-size: 16px;
+  color: #444;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.login input:focus {
+  border-color: #4D96FF;
+}
+
+/* Hands */
+.hand {
+  position: absolute;
+  top: 0;
+  width: 35px;
+  height: 35px;
+  transition: transform 0.3s ease;
+}
+
+.hand.left {
+  left: 0;
+  transform: rotate(-5deg);
+}
+
+.hand.right {
+  right: 0;
+  transform: rotate(5deg);
+}
+
+/* Login button */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #243946;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s;
+  font-size: 14px;
+}
+
+.login-button:active {
+  transform: scale(0.95);
+}
+
+/* Password button */
+.password-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  color: #666;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 14px;
+}
+
+/* Hover and focus states */
+.username:focus ~ .hands {
+  transform: translate(-50%, -80px);
+}
+
+.username:focus ~ .hands .bird-1 {
+  animation: fly 0.8s ease infinite;
+}
+
+.username:focus ~ .hands .bird-1 .wing-left {
+  animation: flap 0.2s ease-in-out infinite;
+}
+
+.username:focus ~ .hands .bird-1 .wing-right {
+  animation: flapRight 0.2s ease-in-out infinite;
+}
+
+.username:focus ~ .hands .bird-2 {
+  animation: fly2 0.8s ease infinite 0.1s;
+}
+
+.username:focus ~ .hands .bird-2 .wing-left {
+  animation: flap 0.2s ease-in-out infinite 0.1s;
+}
+
+.username:focus ~ .hands .bird-2 .wing-right {
+  animation: flapRight 0.2s ease-in-out infinite 0.1s;
+}
+
+.username:focus ~ .hands .bird-3 {
+  animation: fly3 0.8s ease infinite 0.2s;
+}
+
+.username:focus ~ .hands .bird-3 .wing-left {
+  animation: flap 0.2s ease-in-out infinite 0.2s;
+}
+
+.username:focus ~ .hands .bird-3 .wing-right {
+  animation: flapRight 0.2s ease-in-out infinite 0.2s;
+}
+
+.password:focus ~ .hands {
+  transform: translate(-50%, -60px);
+}
+
+.password:focus ~ .hands .bird .wing-left {
+  animation: flap 0.3s ease infinite;
+}
+
+.password:focus ~ .hands .bird .wing-right {
+  animation: flapRight 0.3s ease infinite;
+}
+
+/* Modal Background */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Darker background for better focus */
+  z-index: 1000;
+  overflow-y: auto;
+  animation: fade-in 0.4s ease-out; /* Fade-in effect for modal background */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 650px;
+  max-height: 80%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  animation: slide-down 0.4s ease-out;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.close:hover {
+  color: #ff6347;
+}
+
+/* Fade-in Animation for Modal Background */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Slide-down Animation for Modal Content */
+@keyframes slide-down {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Body */
+.modal-body p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0;
+  color: #555;
+}
+
+.modal-body strong {
+  color: #495057; /* Slightly darker color for labels */
+}
+
+/* Custom Footer */
+.custom-footer {
+  width: 80%;
+  max-width: 500px;
+  margin: 0px auto;
+  text-align: center;
+  padding: 0px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Coffee Button */
+.coffee-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6c757d;
+  padding: 12px 18px;
+  margin: 10px auto;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.coffee-btn:hover {
+  color: #495057;
+  background-color: #e9ecef;
+}
+
+/* Responsive Tasarım için Medya Sorguları */
+@media screen and (max-width: 480px) {
+  .center {
+    width: 95%;
+    padding: 20px 10px;
+  }
+  
+  .bird {
+    transform: scale(0.9) translateY(-100%);
+  }
+  
+  .modal-content {
+    margin: 5% auto;
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .bird {
+    transform: scale(0.8) translateY(-100%);
+  }
+  
+  .center {
+    padding: 15px 8px;
+  }
+}

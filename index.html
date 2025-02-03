@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İnteraktif Giriş Sistemi - CodeHera Software</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+<div class="center">
+  <form class="login">
+    <label>
+      <i class="fa fa-user"></i>
+      <input class="username" type="text" placeholder="Kullanıcı Adınız">
+      <div class="birds">
+        <div class="bird">
+          <div class="right-eye">
+            <div class="inner-eye"></div>
+            <div class="eyelid"></div>
+          </div>
+          <div class="left-eye">
+            <div class="inner-eye"></div>
+            <div class="eyelid"></div>
+          </div>
+          <div class="mouth"></div>
+          <div class="right-hand"></div>
+          <div class="left-hand"></div>
+          <div class="belly"></div>
+          <div class="right-foot"></div>
+          <div class="left-foot"></div>
+        </div>
+      </div>
+    </label>
+    <label>
+      <i class="fa fa-lock"></i>
+      <input class="password" type="password" placeholder="Şifreniz">
+      <button class="password-button" type="button">Göster</button>
+    </label>
+    <button class="login-button">Giriş Yap</button>
+  </form>
+ <div class="custom-footer">
+    <p>CodeHera Software</p>
+    <button class="coffee-btn" onclick="openModal()">
+      Bize kahve ısmarlamak ister misin?
+    </button>
+  </div>  
+  
+  
+<!-- Modal -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2 style="margin-bottom: 20px; font-size: 24px;">İletişim Bilgileri</h2>
+    <div style="line-height: 1.6;">
+      <p><strong>Kodlayan:</strong> CodeHera Software</p>
+      <p><strong>Telefon:</strong> +90 533 336 37 11</p>
+      <p><strong>Mail Adres:</strong> info@codehera.com</p>
+      <p><strong>Üretici Ülke:</strong> Türkiye</p>
+
+    </div>
+  </div>
+</div>  
+  
+</div>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js'></script>
+<script src="script.js"></script>
+
+
+</body>
+</html>
